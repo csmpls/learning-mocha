@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     }
 
     , watch: {
-      files: ['src/**/**']
+      files: ['app/**/**', 'tests/js/spec/*/*','tests/js/spec/*']
       , tasks: ['concat']
     }
   });
