@@ -23,7 +23,16 @@ App.Templates   || (App.Templates = {});
 var app = app || {};
 
 
-(function () {
+// Configuration
+// -------------
+// Stores all application configuration.
+App.Config = _.extend(App.Config, {
+  // Local Storage Name
+  storeName: "notes"
+});
+
+
+;(function () {
   'use strict';
 
   App.Models.Embed = Backbone.Model.extend({
@@ -47,7 +56,7 @@ var app = app || {};
 
 
 
-(function () {
+;(function () {
   'use strict';
 
   App.Models.Post = Backbone.Model.extend({
@@ -75,6 +84,21 @@ var app = app || {};
       }
     }
 
-  });
-}());
+  })
+}())
 
+
+
+;(function () {
+  'use strict';
+
+  // Notes Collection
+  // ----------------
+  // Uses HTML `localStorage`.
+  App.Collections.Posts = Backbone.Collection.extend({
+
+    model: App.Models.Post
+    , localStorage: new Backbone.LocalStorage(App.Config.storeName)
+
+  })
+}())

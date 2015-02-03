@@ -1,4 +1,4 @@
-(function () {
+;(function () {
   'use strict';
 
   App.Models.Post = Backbone.Model.extend({
@@ -26,6 +26,6 @@
       }
     }
 
-  });
-}());
+  })
+}())
 

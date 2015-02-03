@@ -10,8 +10,11 @@ module.exports = function(grunt) {
       , dist: {
         // the files to concatenate
         files: {
-          'dist/build.js': ['app/js/namespace.js'
-          , 'app/js/*/*.js']
+          'dist/build.js': 
+          ['app/js/namespace.js'
+          , 'app/js/config.js'
+          , 'app/js/models/*.js'
+          , 'app/js/collections/*.js']
 
           , 'tests/tests.js': ['tests/js/spec/*.js'
           , 'tests/js/spec/*/*.js']

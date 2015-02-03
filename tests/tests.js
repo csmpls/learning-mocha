@@ -16,6 +16,57 @@ describe("Namespace", function () {
 });
 
 
+describe("App.Collections.Posts", function() {
+
+	before(function() {
+		//create a ref for all tests + clear existing data
+		this.posts = new App.Collections.Posts()
+		this.posts.localStorage._clear()
+	}) 
+
+	after(function() {
+		this.posts = null
+	})
+
+	describe("creation", function() {
+		it("has default values", function() {
+			expect(this.posts).to.be.ok
+			expect(this.posts).to.have.length(0)
+		})
+	})
+
+	describe("modification", function() {
+
+		beforeEach(function() {
+			this.posts.create({
+				text:'sup bro'
+				, embed: null
+			})
+		})
+
+		afterEach(function() {
+			this.posts.localStorage._clear()
+			this.posts.reset()
+		})
+
+		it("has a single post", function(done) { //done callback for async
+			var posts = this.posts, post // ?
+
+			notes.once('reset', function() {
+				expect(notes).to.have.length(1)
+				note = notes.at(0)
+				expect(note).to.be.ok
+				expect(note.get('text')).to.contain('sup')
+				done(); // async
+			})
+
+			notes.fetch({reset:true})
+		})
+		it("can delete a post")
+		it("can create a second post")
+	})
+})
+
 describe("App.Models.Embed", function () {
   it("has 404 as default values", function () {
     // Create empty note model.
@@ -83,7 +134,7 @@ describe("App.Models.Post", function () {
     expect(model.get('embed').get('title')).to.equal('cooltime')
   })
 
-  it("allows no text content if there is an embed, and assures text == null in these cases", function() {
+  it("if there is an embed, allows user to choose not to enter text, and assures text == null in these cases", function() {
   	var model = new App.Models.Post(
       { title: '   ',
         embed:
@@ -103,14 +154,7 @@ describe("App.Models.Post", function () {
 
   })
 
-  it("removes embeds that 404", function() {
-		var model = new App.Models.Post(
-		  { text:'nice link', embed: new App.Models.Embed({type: "404"}) }
-		)
-		expect(model.get('embed')).to.equal(null)
-		expect(model.get('text')).to.equal('nice link')
-		expect(model.isValid()).to.be.ok
-  });
-
+  it("does not allow empty text with a 404 embed")
+  it("removes embeds that 404")
 
 })

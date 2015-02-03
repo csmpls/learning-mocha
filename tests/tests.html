@@ -27,12 +27,11 @@
 
     <!-- JavaScript Application Libraries -->
     <script src="../dist/build.js"></script>
-    <!-- <script src="../app/js/app/config.js"></script> -->
     <script>
-      // // Test overrides (before any app components).
-      // App.Config = _.extend(App.Config, {
-      //   storeName: "notes-test" // localStorage for tests.
-      // });
+      // Test overrides (before any app components).
+      App.Config = _.extend(App.Config, {
+        storeName: "posts-test" // localStorage for tests.
+      })
     </script>
 
     <!-- Set up Mocha and Chai -->

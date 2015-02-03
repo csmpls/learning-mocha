@@ -1,4 +1,4 @@
-(function () {
+;(function () {
   'use strict';
 
   App.Models.Embed = Backbone.Model.extend({
