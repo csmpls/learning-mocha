@@ -35,7 +35,7 @@ describe("App.Models.Post", function () {
     expect(model.get('embed').get('title')).to.equal('cooltime')
   })
 
-  it("allows no text content if there is an embed, and assures text == null in these cases", function() {
+  it("if there is an embed, allows user to choose not to enter text, and assures text == null in these cases", function() {
   	var model = new App.Models.Post(
       { title: '   ',
         embed:
@@ -55,14 +55,7 @@ describe("App.Models.Post", function () {
 
   })
 
-  it("removes embeds that 404", function() {
-		var model = new App.Models.Post(
-		  { text:'nice link', embed: new App.Models.Embed({type: "404"}) }
-		)
-		expect(model.get('embed')).to.equal(null)
-		expect(model.get('text')).to.equal('nice link')
-		expect(model.isValid()).to.be.ok
-  });
-
+  it("does not allow empty text with a 404 embed")
+  it("removes embeds that 404")
 
 })
