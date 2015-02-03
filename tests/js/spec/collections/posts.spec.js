@@ -34,15 +34,15 @@ describe("App.Collections.Posts", function() {
 		it("has a single post", function(done) { //done callback for async
 			var posts = this.posts, post // ?
 
-			notes.once('reset', function() {
-				expect(notes).to.have.length(1)
-				note = notes.at(0)
-				expect(note).to.be.ok
-				expect(note.get('text')).to.contain('sup')
+			posts.once('reset', function() {
+				expect(posts).to.have.length(1)
+				post = posts.at(0)
+				expect(post).to.be.ok
+				expect(post.get('text')).to.contain('sup')
 				done(); // async
 			})
 
-			notes.fetch({reset:true})
+			posts.fetch({reset:true})
 		})
 		it("can delete a post")
 		it("can create a second post")

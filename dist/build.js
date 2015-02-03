@@ -92,8 +92,6 @@ App.Config = _.extend(App.Config, {
 ;(function () {
   'use strict';
 
-  // Notes Collection
-  // ----------------
   // Uses HTML `localStorage`.
   App.Collections.Posts = Backbone.Collection.extend({
 

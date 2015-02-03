@@ -1,8 +1,6 @@
 ;(function () {
   'use strict';
 
-  // Notes Collection
-  // ----------------
   // Uses HTML `localStorage`.
   App.Collections.Posts = Backbone.Collection.extend({
 
